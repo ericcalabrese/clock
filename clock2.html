@@ -1,0 +1,104 @@
+<html>
+<head>
+<style>
+body {
+	width: 100%;
+	margin: 0;
+	background-color: black;
+}
+.header {
+	background-color: #DCE4E6;
+	margin: 0;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	text-align: center;
+	font-size: 175%;
+	font-family: "Century Gothic", CenturyGothic , AppleGothic , sans-serif;
+	font-style: italic;
+}
+.nav {
+	color: white;
+	background-color: #6D7273;
+	margin: 0;
+	padding: 1px;
+	text-align: center;
+}
+.nav li {
+	list-style-type: none;
+	display: inline-block;
+	width: 300px;
+	font-family: "Century Gothic", CenturyGothic , AppleGothic , sans-serif;
+	font-style: bold;
+}
+.clockStyle {
+	background-color: black;
+	border: #6D7273 10px solid;
+	border-radius: 30px;
+	padding: 10px;
+	color: #00FA3A;
+	font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 60px;
+    font-weight: bold;
+	letter-spacing: 2px;
+	text-align: center;
+	position: absolute;
+	top: 300px;
+	left: 265px;
+}
+</style>
+<title>Digital Clock</title>
+</head>
+<body>
+<div class = "header">
+	<h2>The Digital Clock</h2>
+	<h4>of da Futureeee</h4>
+</div>
+<div>
+	<ul class = "nav">
+		<li>These</li>
+		<li>Don't</li>
+		<li>Work</li>
+	</ul>
+</div>
+<div id="clockDisplay" class="clockStyle"></div>
+
+
+<script>
+function myTime() {
+	var currentTime = new Date();
+	var diem = "AM";
+	var h = currentTime.getHours();
+	var m = currentTime.getMinutes();
+    var s = currentTime.getSeconds();
+    var ms = currentTime.getMilliseconds();
+	setTimeout('myTime()',1);
+
+    if (h == 0) {
+		h = 12;
+	} else if (h > 12) { 
+		h = h - 12;
+		diem="PM";
+	}
+	if (h < 10) {
+		h = "0" + h;
+	}
+	if (m < 10) {
+		m = "0" + m;
+	}
+	if (s < 10) {
+		s = "0" + s;
+	}
+	if (ms <= 9) {
+		ms = "00" + ms;
+	}
+	else if (ms <= 99) {
+		ms = "0" + ms;
+	}
+
+    var myClock = document.getElementById('clockDisplay');
+	myClock.innerText = h + ":" + m + ":" + s + " " + ms + " " + diem;
+}
+myTime();
+</script>
+</body>
+</html>
